@@ -1,5 +1,4 @@
-// You can edit this code!
-// Click here and start typing.
+// package cli implements solution 
 package main
 
 import (
@@ -15,16 +14,22 @@ import (
 var name string
 
 type Person struct {
-	LastName  string
-	FirstName string
-	birth     time.Time
-	email     string
+	FirstName string    `json:"firstName"`
+	LastName  string    `json:"lastName"`
+	Birth     time.Time `json:"birth"`
+	Email     string    `json:"email"`
 }
 
 func (p *Person) wish() {
 	fmt.Printf("Subject: Happy birthday!\nHappy birthday, dear %s\n!", p.FirstName)
-
 }
+func (p *Person) update(lastName string, firstName string, birth time.Time, email string) {
+	p.LastName = lastName
+	p.FirstName = firstName
+	p.Birth = birth
+	p.Email = email
+}
+
 func main() {
 
 	fmt.Println("Hello, 世界")
@@ -36,13 +41,16 @@ func main() {
 	fmt.Println(values)
 }
 
-// function readFile() reads from a text file and returns a string slice
+// function readFile() reads from a text file and returns a string slice and error value
 func readFile(filename string) ([]string, error) {
 	var values []string
 
-	// Check if the filename already has ".txt" extension
+	// Check if the filename already has ".txt" or ".json" extension
 	if !strings.HasSuffix(filename, ".txt") {
 		filename += ".txt"
+	} else {
+		strings.HasSuffix(filename, ".json")
+		readJson(filename)
 	}
 
 	//Open the file
@@ -66,4 +74,10 @@ func readFile(filename string) ([]string, error) {
 
 	values = strings.Split(content, ",")
 	return values, nil
+}
+
+// function readJson() reads from a json file and returns a string slice and error value
+func readJson(filename string) (s []string, err error) {
+
+	return nil, nil
 }
