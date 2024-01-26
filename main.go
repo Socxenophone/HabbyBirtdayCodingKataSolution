@@ -1,8 +1,9 @@
-// package cli implements solution 
+// package cli implements solution
 package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
@@ -78,6 +79,18 @@ func readFile(filename string) ([]string, error) {
 
 // function readJson() reads from a json file and returns a string slice and error value
 func readJson(filename string) (s []string, err error) {
+	var values []string
+	// Open the file
+	f, err := os.Open(filename)
+	if err != nil {
+		return nil, errors.New("Failed opening .json file")
+	}
 
-	return nil, nil
+	//Declare need decoder, decode the json into values slice
+	decoder := json.NewDecoder(f)
+	err = decoder.Decode(&values)
+	if err != nil {
+		return nil, errors.New("Failed to decode .json file")
+	}
+	return values, nil
 }
