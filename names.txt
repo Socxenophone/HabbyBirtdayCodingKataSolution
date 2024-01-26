@@ -1,0 +1,3 @@
+John Doe, 2000-01-01T12:00:00Z, john.doe@example.com
+Bob Smith, 1995-05-15T08:30:00Z, bob.smith@example.com
+Susan Johnson, 1988-09-20T15:45:00Z, susan.johnson@example.com
