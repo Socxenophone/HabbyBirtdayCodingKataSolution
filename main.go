@@ -32,10 +32,10 @@ func (p *Person) update(lastName string, firstName string, birth time.Time, emai
 }
 
 func main() {
-
-	fmt.Println("Hello, 世界")
-	fmt.Scanf("Filename:", &name)
-	values, err := readFile(name)
+	var names string
+	fmt.Println("Enter the file containing names:")
+	fmt.Scanf(names)
+	values, err := readFile(names)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -49,8 +49,7 @@ func readFile(filename string) ([]string, error) {
 	// Check if the filename already has ".txt" or ".json" extension
 	if !strings.HasSuffix(filename, ".txt") {
 		filename += ".txt"
-	} else {
-		strings.HasSuffix(filename, ".json")
+	} else if strings.HasSuffix(filename, ".json") {
 		readJson(filename)
 	}
 
