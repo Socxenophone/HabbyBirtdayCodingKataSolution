@@ -48,10 +48,10 @@ func readFile(filename string) ([]string, error) {
 
 	// Check if the filename already has ".txt" or ".json" extension
 	if !strings.HasSuffix(filename, ".txt") {
-		filename += ".txt"
-	} else if strings.HasSuffix(filename, ".json") {
-		readJson(filename)
-	}
+    filename += ".txt"
+} else if strings.HasSuffix(filename, ".json") {
+    return readJson(filename)  // Return the result of readJson
+}
 
 	//Open the file
 	f, err := os.Open(filename)
